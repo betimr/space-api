@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { SpaceImageResponse } from './space-image-response';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,6 @@ export class SpaceApiService {
 
   getSpaceImage() {
     
-    return this.http.get(this.nasaUrl);
+    return this.http.get<SpaceImageResponse>(this.nasaUrl);
   }
 }

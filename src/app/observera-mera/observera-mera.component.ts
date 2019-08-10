@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SpaceApiService } from '../space-api.service';
+import { SpaceImageResponse } from '../space-image-response'
 
 @Component({
   selector: 'app-observera-mera',
@@ -9,7 +10,8 @@ import { SpaceApiService } from '../space-api.service';
 })
 export class ObserveraMeraComponent implements OnInit {
   public nums = [];
-  private res;
+  public spaceResponse: SpaceImageResponse;
+  
   constructor(private spaceApi: SpaceApiService) { }
 
   ngOnInit() {
@@ -30,9 +32,9 @@ export class ObserveraMeraComponent implements OnInit {
 
     myObservable.subscribe(myObserver);
 
-    this.spaceApi.getSpaceImage().subscribe( (x) => 
-      this.res = x
+    this.spaceApi.getSpaceImage().subscribe( (res: SpaceImageResponse) => 
+      this.spaceResponse = res
     );
-    
+
   }
 }
